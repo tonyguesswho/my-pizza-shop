@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  orders:
+    build: ./backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend/:/usr/src/backend/
+    ports:
+      - 8000:8000
+    env_file:
+      - ./backend/.env.dev
+    depends_on:
+      - pizza-db
+  pizza-db:
+    image: postgres:12-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=pizza
+      - POSTGRES_PASSWORD=pizza
+      - POSTGRES_DB=pizza_dev
+
+volumes:
+  postgres_data:
