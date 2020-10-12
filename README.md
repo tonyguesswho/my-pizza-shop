@@ -68,7 +68,6 @@ To stop the running backend container run the command `docker-compose down`
 To Stop the FE APP `ctrl or command C`
 
 
-I will appreciate any feedback on this project :)
 
 
 
@@ -90,4 +89,16 @@ Personally I will add a json field that will hold the extra details for any pizz
 
 A question to think about: how would you design a system if you have CPU heavy long-running (5min plus) machine learning task that needs to be executed in order to recommend the best pizza for registered customers (later sent via email) - make a diagram.
 
-Spend no more than 4 hours in total, prioritize what is most important to have in your opinion.
+
+ANSWER:
+
+For a task like this I will pass the long running process to a worker such as Celery  to handle the machine learning task  and also send the email, So the user gets a response and later gets an email.I will most likely use redis as the message broker.
+
+- Diagram
+
+![diagram (2)](https://drive.google.com/file/d/1QppYy1jI5Gh84OAocX5JfUyGCWF4r2c5/view?usp=sharing)	
+
+
+I will appreciate any feedback on this project :)
+
+
