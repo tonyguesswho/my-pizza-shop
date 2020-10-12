@@ -95,8 +95,7 @@ ANSWER:
 For a task like this I will pass the long running process to a worker such as Celery  to handle the machine learning task  and also send the email, So the user gets a response and later gets an email.I will most likely use redis as the message broker.
 
 - Diagram
-
-![diagram (2)](https://drive.google.com/file/d/1QppYy1jI5Gh84OAocX5JfUyGCWF4r2c5/view?usp=sharing)	
+![Diagram](https://user-images.githubusercontent.com/19865565/95784462-c51f7680-0ccb-11eb-834e-fc5e5cde444b.png)	
 
 
 I will appreciate any feedback on this project :)
