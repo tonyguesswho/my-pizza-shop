@@ -9,23 +9,22 @@ from .models import Order
 
 class Orders(APIView):
     @swagger_auto_schema(
-    operation_summary="an endpoint to list all orders",
-    operation_description="endpoints returns list of orders with ingredients and status",
-    responses={'200': 'Success','400': 'Bad Request.'},
-    tags=['Order creation']
+        operation_summary="an endpoint to list all orders",
+        operation_description="returns list of orders",
+        responses={'200': 'Success', '400': 'Bad Request.'},
+        tags=['Order creation']
     )
     def get(self, request):
         orders = Order.objects.all()
         serializer = serializers.OrderSerializer(orders, many=True)
         return Response(serializer.data)
 
-
     @swagger_auto_schema(
-    request_body=serializers.OrderSerializer,
-    operation_summary="an endpoint to create an order",
-    operation_description="endpoint takes a name, and optional ingredients, status is defaulted to waiting",
-    responses={'201': 'Create Order','400': 'Bad Request.'},
-    tags=['Order creation']
+        request_body=serializers.OrderSerializer,
+        operation_summary="an endpoint to create an order",
+        operation_description="endpoint takes a name to create an ordeer",
+        responses={'201': 'Create Order', '400': 'Bad Request.'},
+        tags=['Order creation']
     )
     def post(self, request):
 

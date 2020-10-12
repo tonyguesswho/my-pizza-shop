@@ -6,9 +6,9 @@
 The **my-pizza-shop-app** is an application that allows the user to order pizza with different ingredient. The project is divided into two parts. The Frontend build on **ReactJs - Javascript** and the Backend built on **Django(DRF) - Python**.
 
 
-- Key Application features
-	Order Pizza and seleect ingredient
-	List all pizza orders with status, name and ingredients
+## Key Application features
+- Order Pizza and seleect ingredient
+- List all pizza orders with status, name and ingredients
 
 
 ## Technology Stack
@@ -20,7 +20,7 @@ The **my-pizza-shop-app** is an application that allows the user to order pizza 
 - ReactJS
 
 
-## Set Up Development With Docker For BAckeend
+## Set Up Development With Docker For Backend Application
 
 1. Download Docker from [here](https://docs.docker.com/)
 2. Set up an account to download Docker
@@ -45,7 +45,7 @@ To run test run `docker-compose run backend sh -c "python manage.py test"`
 	```
 
 
-#### Setup Frontend locally After the BAckend runing
+## Setup Frontend locally After the Starting Backend
 
 #### (Setting up the front end locally)
 - Check that Node (recommended v11.12+) and npm are installed on your machine.
@@ -84,7 +84,8 @@ If no ingredient of type D was sent(i.e no dough ingredieent then we default to 
 
 How would you deal with a customer, who would like to add some extras? For example, I would like to get extra cheese in all pizzas in my order and extra tomatoes in one of the pizzas. How would you design a database for this task?
 
-ANSWER
+ANSWER:
+
 Personally I will add a json field that will hold the extra details for any pizza order, Basically if any order nees any  thing extra, it is added to the json extra field on the order table.
 
 A question to think about: how would you design a system if you have CPU heavy long-running (5min plus) machine learning task that needs to be executed in order to recommend the best pizza for registered customers (later sent via email) - make a diagram.
