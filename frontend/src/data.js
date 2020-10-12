@@ -1,2 +1,2 @@
 
-export const ingredients = [cheese, bacon, mushrooms, ananas]
+export const ingredients = [{ value: 'cheese' }, { value: 'bacon' }, { value: 'mushrooms' }, { value: 'ananas' }];

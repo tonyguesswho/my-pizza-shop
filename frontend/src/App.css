@@ -44,3 +44,7 @@
   background: #1B80A5;
   color: floralwhite;
 }
+
+.body{
+  min-height: 90vh;
+}
