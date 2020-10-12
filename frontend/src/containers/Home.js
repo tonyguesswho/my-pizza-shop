@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useMutation, useQuery, queryCache } from 'react-query';
 import { CreateOrder, GetOrders } from '../Queries'
 import { Layout, Space, Select, Divider, Input, Form, Button, Col, Row } from 'antd';
 import tagRender from '../components/Tags'
 import OrderTable from '../components/OrderTable'
+import Alert from '../components/Alert'
 import { ingredients } from '../data'
 const { Header, Content } = Layout;
 
 const Order = () => {
 	const [form] = Form.useForm();
-	const [mutate, info, isLoading] = useMutation(CreateOrder, {
+	const [message, setMessage] = useState('')
+	const [mutate, { isLoading, isSuccess, error }] = useMutation(CreateOrder, {
 		onSuccess: () => {
 			form.resetFields()
+			setMessage('Order successful')
 			queryCache.invalidateQueries('orders')
 		}
 	})
@@ -32,7 +35,7 @@ const Order = () => {
 				}
 			})
 		} catch (error) {
-
+			setMessage('An error Occured')
 		}
 
 	}
@@ -44,6 +47,8 @@ const Order = () => {
 			<Space direction="vertical" size="large">
 				<Header className="header">MY PIZZA SHOP</Header>
 				<Content className="body">
+					{error && <Alert message={message} type="error" placeholder="" />}
+					{isSuccess && <Alert message={message} type="success" placeholder="" />}
 					<Row justify="space-around">
 						<Col xs={22} sm={18} md={16} lg={8}>
 							<Form name="basic" onFinish={createOrder} form={form}>
