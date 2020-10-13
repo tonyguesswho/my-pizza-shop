@@ -37,7 +37,7 @@ To setup for development with Docker after cloning the repository please do/run 
 The `docker-compose build` command builds the docker image where the api and its postgres database would be situated.
 Also this command does the necessary setup that is needed for the API to connect to the database.
 
-To run test run `docker-compose run backend sh -c "python manage.py test"`
+To run test run `docker-compose run orders sh -c "python manage.py test"`
 
 - Visit the endpoint Documentation
 	```
