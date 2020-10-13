@@ -2,9 +2,14 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from drf_yasg2.utils import swagger_auto_schema
+import asyncio
 
 from . import serializers
 from .models import Order
+
+
+async def get_orders():
+    return Order.objects.all()
 
 
 class Orders(APIView):
@@ -15,7 +20,10 @@ class Orders(APIView):
         tags=['Order creation']
     )
     def get(self, request):
-        orders = Order.objects.all()
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        orders = loop.run_until_complete(get_orders())
+        loop.close()
         serializer = serializers.OrderSerializer(orders, many=True)
         return Response(serializer.data)
 
